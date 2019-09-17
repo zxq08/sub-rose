@@ -1,0 +1,38 @@
+/*屏幕宽度小于340px时的样式*/
+/*样式1*/
+	/* 屏幕宽度小于340px时，基准尺寸使用18px */
+	html{
+		font-size: 20px;
+	}
+
+
+/*屏幕宽度在340px至410px时的样式*/
+@media(min-width: 340px ,max-width: 410px){
+/*样式2*/
+	/* 屏幕宽度在340px至410px时，基准尺寸使用20px */
+	html{
+		font-size: 20px;
+	}
+}
+
+/*屏幕宽度大于410px时的样式*/
+@media(min-width: 410px){
+/*样式3*/
+	/*屏幕宽度大于410px时，基准尺寸使用22px */
+	html{
+		font-size: 22px;
+	}
+}
+
+body{
+	/*max-width: 640px;*/
+	/*min-width: 375px;*/
+	margin: 0 auto;
+	background: #f8f8f8;
+	overflow-x: hidden;
+	-webkit-overflow-scrolling: touch;/* ios上滚动元素具有弹性，只针对webkit生效 */
+}
+
+html,body{
+	height: 100%;
+}
