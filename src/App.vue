@@ -94,12 +94,12 @@ export default {
     }
   },
   mounted: function () {
-    /* setTimeout(() => {
+    setTimeout(() => {
       this.showHome()
       setTimeout(() => {
         this.$refs.photoWrap.style.display = 'none'
       }, 2000)
-    }, 2000) */
+    }, 4000)
   }
 }
 </script>

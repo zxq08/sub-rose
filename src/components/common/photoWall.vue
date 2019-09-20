@@ -7,6 +7,9 @@
         </div>
       </li>
     </ul>
+    <div class="howLongMsg" :style="{opacity: showMsg}">
+      {{msg}}
+    </div>
   </div>
 </template>
 <script type="text/javascript">
@@ -17,23 +20,52 @@ export default {
   },
   data () {
     return {
+      showMsg: 0,
+      howLong: 0,
+      msg: ''
     }
   },
   methods: {
     initAnimation () {
       var wall = this.$refs.wallPicture
+      var beginDt = new Date('2017-09-04')
+      var left, top, right
+      // 照片散开
       for (let i = 0; i < wall.length; i++) {
-        if (wall[i].offsetLeft <= '100' && wall[i].offsetTop > '100') {
-          var left = wall[i].offsetLeft + wall[i].offsetWidth
+        if (wall[i].offsetLeft <= '80' && wall[i].offsetTop > '100') {
+        // 左方移出
+          left = wall[i].offsetLeft + wall[i].offsetWidth
           wall[i].style.marginLeft = '-' + left + 'px'
-        } else if (wall[i].offsetTop <= '100') {
-          var top = wall[i].offsetTop + wall[i].offsetHeight
+        } else if (wall[i].offsetTop <= '100' && wall[i].offsetLeft <= '80') {
+        // 左上方移出
+          top = wall[i].offsetTop + wall[i].offsetHeight
+          left = wall[i].offsetLeft + wall[i].offsetWidth
           wall[i].style.marginTop = '-' + top + 'px'
-        } else if (wall[i].offsetLeft > '100') {
-          var right = wall[i].offsetLeft + wall[i].offsetWidth
+          wall[i].style.marginLeft = '-' + left + 'px'
+        } else if (wall[i].offsetTop <= '100' && wall[i].offsetLeft > '80') {
+        // 上方移出
+          top = wall[i].offsetTop + wall[i].offsetHeight
+          wall[i].style.marginTop = '-' + top + 'px'
+        } else if (wall[i].offsetTop <= '100' && wall[i].offsetLeft > '120') {
+        // 右上方移出
+          top = wall[i].offsetTop + wall[i].offsetHeight
+          left = wall[i].offsetLeft + wall[i].offsetWidth
+          wall[i].style.marginTop = '-' + top + 'px'
+          wall[i].style.marginLeft = left + 'px'
+        } else if (wall[i].offsetLeft >= '120' && wall[i].offsetTop > '100') {
+        // 右方移出
+          right = wall[i].offsetLeft + wall[i].offsetWidth
           wall[i].style.marginLeft = right + 'px'
         }
       }
+      // 显示日期
+      var now = new Date()
+      var timePreDat = 1000 * 60 * 60 * 24
+      this.howLong = Math.ceil((now.getTime() - beginDt.getTime()) / timePreDat)
+      this.msg = '我们在一起已经 ' + this.howLong + ' 天啦~'
+      setTimeout(() => {
+        this.showMsg = 1
+      }, 500)
     }
   },
   mounted: function () {
@@ -44,8 +76,6 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
-@import '../../assets/style/animates-out.css'
-
 .photo-wall
   width 100vw
   height 100vh
@@ -64,4 +94,14 @@ export default {
     .picture
       width 100%
       height 100%
+  .howLongMsg
+    text-align center
+    font-size 1rem
+    color #fff
+    width 100%
+    position absolute
+    left 0px
+    right 0px
+    top 40%
+    transition opacity .5s ease-out
 </style>
