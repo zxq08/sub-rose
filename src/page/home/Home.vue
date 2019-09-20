@@ -1,17 +1,17 @@
 <template>
   <div>
-    <Header></Header>
+    <home-header></home-header>
     <todo-list></todo-list>
   </div>
 </template>
 <script type="text/javascript">
-import Header from '../../components/common/header'
+import HomeHeader from '../../components/common/header'
 import todoList from '../todolist/TodoList'
 
 export default {
   name: 'home',
   components: {
-    Header,
+    HomeHeader,
     todoList
   }
 }

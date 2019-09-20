@@ -24,18 +24,18 @@ export default {
           'top': '3rem',
           'right': '0',
           'bottom': '0',
-          'left': '2rem',
-          'width': '5rem',
-          'height': '3rem'
+          'left': '1rem',
+          'width': '4rem',
+          'height': '5rem'
         }, {
           'id': 2,
           'src': 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1043272071,3287178444&fm=15&gp=0.jpg',
           'top': '1rem',
           'right': '0',
           'bottom': '0',
-          'left': '7rem',
-          'width': '4rem',
-          'height': '5rem'
+          'left': '5rem',
+          'width': '6rem',
+          'height': '4rem'
         }, {
           'id': 3,
           'src': 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=455153787,310446010&fm=26&gp=0.jpg',
@@ -43,7 +43,43 @@ export default {
           'right': '0',
           'bottom': '0',
           'left': '12rem',
+          'width': '6rem',
+          'height': '5rem'
+        }, {
+          'id': 4,
+          'src': 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=455153787,310446010&fm=26&gp=0.jpg',
+          'top': '7rem',
+          'right': '0',
+          'bottom': '0',
+          'left': '2rem',
+          'width': '6rem',
+          'height': '8rem'
+        }, {
+          'id': 5,
+          'src': 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2487612740,2250555961&fm=26&gp=0.jpg',
+          'top': '5rem',
+          'right': '0',
+          'bottom': '0',
+          'left': '7rem',
           'width': '5rem',
+          'height': '6rem'
+        }, {
+          'id': 6,
+          'src': 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1043272071,3287178444&fm=15&gp=0.jpg',
+          'top': '8.5rem',
+          'right': '0',
+          'bottom': '0',
+          'left': '14rem',
+          'width': '4rem',
+          'height': '5rem'
+        }, {
+          'id': 7,
+          'src': 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1043272071,3287178444&fm=15&gp=0.jpg',
+          'top': '13rem',
+          'right': '0',
+          'bottom': '0',
+          'left': '6rem',
+          'width': '10rem',
           'height': '6rem'
         }
       ]
@@ -58,12 +94,12 @@ export default {
     }
   },
   mounted: function () {
-    setTimeout(() => {
+    /* setTimeout(() => {
       this.showHome()
       setTimeout(() => {
         this.$refs.photoWrap.style.display = 'none'
       }, 2000)
-    }, 2000)
+    }, 2000) */
   }
 }
 </script>

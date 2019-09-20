@@ -1,0 +1,16 @@
+@keyframes centerToLeftout{
+	from {
+		margin-left: 0;
+	}
+	to {
+		margin-left: -100vw;
+	}
+}
+@keyframes centerToRightout{
+	from {
+		margin-right: auto;
+	}
+	to {
+		margin-right: -100vw;
+	}
+}
