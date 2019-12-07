@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/page/home/Home'
+import Login from '@/page/login/Login'
+import FirstPage from '@/page/firstPage/FirstPage'
 import Nearby from '@/page/nearby/Nearby'
 import Order from '@/page/order/Order'
 import User from '@/page/user/User'
@@ -21,8 +22,12 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: Home
+      name: 'login',
+      component: Login
+    }, {
+      path: '/firstPage',
+      name: 'FirstPage',
+      component: FirstPage
     }, {
       path: '/nearby',
       name: 'Nearby',

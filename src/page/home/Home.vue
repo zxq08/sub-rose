@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="home-wrap">
     <home-header></home-header>
     <todo-list></todo-list>
   </div>
 </template>
 <script type="text/javascript">
 import HomeHeader from '../../components/common/header'
-import todoList from '../todolist/TodoList'
+import todoList from './components/TodoList'
 
 export default {
   name: 'home',

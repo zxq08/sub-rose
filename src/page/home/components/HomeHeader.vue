@@ -9,10 +9,10 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
-/*  @import "~@/assets/style/varibles.styl"
+@import "~@/assets/style/varibles.styl"
   .header
     width 100%
     height $headerHight
     background $bgColor
-    color #fff  */
+    color #fff
 </style>

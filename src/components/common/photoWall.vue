@@ -63,9 +63,10 @@ export default {
       var timePreDat = 1000 * 60 * 60 * 24
       this.howLong = Math.ceil((now.getTime() - beginDt.getTime()) / timePreDat)
       this.msg = '我们在一起已经 ' + this.howLong + ' 天啦~'
+      console.log(this.msg)
       setTimeout(() => {
         this.showMsg = 1
-      }, 500)
+      }, 1000)
     }
   },
   mounted: function () {
@@ -90,7 +91,7 @@ export default {
     position absolute
     background #eee
     padding .25rem
-    transition all 1s ease-out
+    transition all 2s linear
     .picture
       width 100%
       height 100%
@@ -103,5 +104,5 @@ export default {
     left 0px
     right 0px
     top 40%
-    transition opacity .5s ease-out
+    transition opacity 2s linear
 </style>
