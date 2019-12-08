@@ -18,6 +18,7 @@ export default {
   name: 'firstPage',
   data () {
     return {
+      homeAPI: {},
       hideHome: true,
       photos: [
         {
@@ -103,10 +104,15 @@ export default {
         setTimeout(() => {
           console.log(vThis.$refs.photoWrap)
           vThis.$refs.photoWrap.style.display = 'none'
-          home.$create()
+          vThis.homeAPI = home.$create()
         }, 1000)
       }, 5000)
     }, 1000)
+  },
+  beforeRouteLeave (to, from, next) {
+    console.log(this.homeAPI)
+    this.homeAPI.remove()
+    next()
   }
 }
 </script>
