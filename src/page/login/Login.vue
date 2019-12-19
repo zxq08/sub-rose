@@ -16,6 +16,7 @@
 </template>
 <script>
 import homeHeader from '@/components/common/header'
+import axios from 'axios'
 
 export default {
   name: 'login',
@@ -62,7 +63,18 @@ export default {
     }, */
     submitHandler (e) {
       console.log('submit')
-      this.$router.push('/firstPage')
+      console.log(this.model.userValue)
+      console.log(this.model.passValue)
+      let data = new FormData()
+      data.append('username', this.model.userValue)
+      data.append('password', this.model.passValue)
+      axios.post('/login', data)
+        .then(res => {
+          console.log(res)
+        })
+      // debugger
+      return false
+      /* this.$router.push('/firstPage') */
     },
     validateHandler (result) {
       this.validity = result.validity
