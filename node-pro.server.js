@@ -1,5 +1,6 @@
 var express = require('express');
 var mysql = require('mysql');
+const bodyParser = require('body-parser');
 /*var config = require('./config/index');*/
 /*var cors = require('cors');*/
 
@@ -7,6 +8,15 @@ var mysql = require('mysql');
 var port = 9000
 
 var app = express();
+
+app.use(bodyParser.json());//数据JSON类型
+app.use(bodyParser.urlencoded({ extended: false }));//解析post请求数据
+app.all('*',function(req,res,next){  
+  let origin=req.headers.origin;
+  res.setHeader('Access-Control-Allow-Origin',"*");
+  res.setHeader('Access-Control-Allow-Headers','Content-Type');
+  next();
+})
 
 // 连接数据库
 var db = mysql.createConnection({
@@ -51,16 +61,19 @@ apiRoutes.get('/city', function (req, res) {
 });
 */
 // 登录验证
-apiRoutes.post('/login', function (req, res) {
-  let params = request.body;
+app.post('/login', function (req, res) {
+  let params = req.body;
+//  res.json({result: 'success', data: req.body});
 　 let username = params.username;
 　 let password = params.password;
-  let sql = `SELECT * FROM user WHERE username = ${username}`
+  let sql = `SELECT * FROM user WHERE username = '${username}'`
+  console.log(sql)
   db.query(sql, (err, result) => {
     if (err) {
       console.log(err)
     } else {
-      console.log(result)
+      // res.json(result)
+      // console.log(result)
       resultData = result[0]
       if (resultData.password == password) {
         return true
@@ -70,6 +83,15 @@ apiRoutes.post('/login', function (req, res) {
     }
   })
 })
+// app.get('/login', function (req, res) {
+//   let sql = "SELECT * from user";
+//   db.query(sql, (err, result) => {
+//     if(err) throw err;
+//     else {
+//       res.json(result)
+//     }
+//   })
+// })
 /* //post方法获取请求参数
 apiRoutes.post('/city', function (req, res) {
   var data = '';

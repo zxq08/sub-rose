@@ -38,18 +38,25 @@ export default {
           },
           rules: {
             required: true
-          }
+          },
+          debounce: 200
         },
         {
           type: 'input',
           modelKey: 'passValue',
           label: 'password',
           props: {
-            placeholder: '请输入密码'
+            placeholder: '请输入密码',
+            type: 'password',
+            eye: {
+              open: false,
+              reverse: false
+            }
           },
           rules: {
             required: true
-          }
+          },
+          debounce: 200
         }
       ]
     }
@@ -62,15 +69,14 @@ export default {
       this.$router.push('/firstPage')
     }, */
     submitHandler (e) {
-      console.log('submit')
-      console.log(this.model.userValue)
-      console.log(this.model.passValue)
       let data = new FormData()
       data.append('username', this.model.userValue)
       data.append('password', this.model.passValue)
       axios.post('/login', data)
         .then(res => {
+          debugger
           console.log(res)
+          return false
         })
       // debugger
       return false
@@ -86,5 +92,5 @@ export default {
 </script>
 <style lang="stylus" scoped>
 .login-wrap
-  height 100vh
+  height 100%
 </style>

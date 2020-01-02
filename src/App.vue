@@ -10,4 +10,7 @@ export default {
   name: 'app'
 }
 </script>
-<style lang="stylus" scoped></style>
+<style lang="stylus" scoped>
+#app
+  min-height 100%
+</style>
