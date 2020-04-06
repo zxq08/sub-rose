@@ -61,22 +61,30 @@ apiRoutes.get('/city', function (req, res) {
 });
 */
 // 登录验证
-app.post('/login', function (req, res) {
+app.post('/login', bodyParser.json(), function (req, res) {
   let params = req.body;
-//  res.json({result: 'success', data: req.body});
-　 let username = params.username;
-　 let password = params.password;
+　let username = params.username;
+　let password = params.password;
   let sql = `SELECT * FROM user WHERE username = '${username}'`
-  console.log(sql)
   db.query(sql, (err, result) => {
     if (err) {
       console.log(err)
     } else {
-      // res.json(result)
-      // console.log(result)
       resultData = result[0]
-      if (resultData.password == password) {
-        return true
+      if (resultData.password === password) {
+        console.log("success!")
+        var data = '';
+        req.on('data', function (chunk) {
+          data += chunk;
+        })
+        req.on('end', function () {
+          console.log(data)
+        })
+        res.json({
+          code: 0,
+          msg: 'success',
+          data: JSON.stringify(result)
+        });
       } else {
         return false
       }

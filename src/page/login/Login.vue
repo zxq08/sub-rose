@@ -69,16 +69,26 @@ export default {
       this.$router.push('/firstPage')
     }, */
     submitHandler (e) {
-      let data = new FormData()
-      data.append('username', this.model.userValue)
-      data.append('password', this.model.passValue)
-      axios.post('/login', data)
-        .then(res => {
-          debugger
-          console.log(res)
-          return false
-        })
+      axios({
+        url: '/login',
+        method: 'post',
+        data: {
+          username: this.model.userValue,
+          password: this.model.passValue
+        },
+      })
+      .then(res => {
+        alert('111')
+        console.log(res)
+        var result = res.data
+        if (result.code == 0 && result.msg == "success") {
+          alert("yes login!")
+          this.$router.push('/firstPage')
+        }
+        return false
+      })
       // debugger
+      alert('222')
       return false
       /* this.$router.push('/firstPage') */
     },
