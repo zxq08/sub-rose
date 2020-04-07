@@ -75,19 +75,17 @@ export default {
         data: {
           username: this.model.userValue,
           password: this.model.passValue
-        },
-      })
-      .then(res => {
+        }
+      }).then(res => {
         alert('111')
         console.log(res)
         var result = res.data
-        if (result.code == 0 && result.msg == "success") {
-          alert("yes login!")
+        if (result.code === 0 && result.msg === 'success') {
+          alert('yes login!')
           this.$router.push('/firstPage')
         }
         return false
       })
-      // debugger
       alert('222')
       return false
       /* this.$router.push('/firstPage') */

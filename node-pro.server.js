@@ -1,6 +1,8 @@
 var express = require('express');
 var mysql = require('mysql');
 const bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
+const sercet = "love_sasa";
 /*var config = require('./config/index');*/
 /*var cors = require('cors');*/
 
@@ -80,10 +82,15 @@ app.post('/login', bodyParser.json(), function (req, res) {
         req.on('end', function () {
           console.log(data)
         })
+        const token = jwt.sign({
+          username,
+          password,
+          'time': Date.now(),
+        },sercet,{expiresIn:60*60*24*7});
         res.json({
           code: 0,
           msg: 'success',
-          data: JSON.stringify(result)
+          data: token
         });
       } else {
         return false
