@@ -17,6 +17,7 @@
 <script>
 import homeHeader from '@/components/common/header'
 import axios from 'axios'
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'login',
@@ -68,25 +69,26 @@ export default {
     goHome () {
       this.$router.push('/firstPage')
     }, */
+    ...mapMutations(['changeLogin']),
     submitHandler (e) {
+      let othis = this;
       axios({
         url: '/login',
         method: 'post',
         data: {
-          username: this.model.userValue,
-          password: this.model.passValue
+          username: othis.model.userValue,
+          password: othis.model.passValue
         }
       }).then(res => {
-        alert('111')
         console.log(res)
         var result = res.data
         if (result.code === 0 && result.msg === 'success') {
-          alert('yes login!')
-          this.$router.push('/firstPage')
+          // alert('yes login!')
+          othis.changeLogin({ userToken: result.data })
+          othis.$router.push('/firstPage')
         }
         return false
       })
-      alert('222')
       return false
       /* this.$router.push('/firstPage') */
     },
